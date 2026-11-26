@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión del proyecto TI3062-20</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f1f5f7;
+      color: #183044;
+      font: 1rem/1.6 system-ui, sans-serif;
+    }
+
+    header {
+      padding: 2rem 1.25rem;
+      background: #123046;
+      color: white;
+      border-bottom: 4px solid #e9aa50;
+    }
+
+    header > div, main {
+      max-width: 860px;
+      margin: auto;
+    }
+
+    main { padding: 1.25rem; }
+    h1, h2 { line-height: 1.2; }
+    h1 { margin: .4rem 0; }
+    h2 { margin-top: 0; }
+
+    section {
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: white;
+      border: 1px solid #d5dfe6;
+      border-radius: 12px;
+    }
+
+    li + li { margin-top: .75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <p>Sistema de gestión del proyecto</p>
+      <h1 id="titulo">Proyecto TI3062-20</h1>
+      <p id="identificacion"></p>
+    </div>
+  </header>
+
+  <main>
+    <p id="estado" role="status">Cargando datos del proyecto…</p>
+
+    <div id="resumen" hidden>
+      <section>
+        <h2>Problemática</h2>
+        <p id="contexto"></p>
+        <p><strong>Actores:</strong> <span id="actores"></span></p>
+        <p><strong>Proceso afectado:</strong> <span id="proceso"></span></p>
+      </section>
+
+      <section>
+        <h2>Requerimientos</h2>
+        <ul id="requerimientos"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    async function cargarProyecto() {
+      const estado = document.querySelector("#estado");
+
+      try {
+        const respuesta = await fetch("./data/proyecto-20.json");
+        if (!respuesta.ok) {
+          throw new Error(`HTTP ${respuesta.status}`);
+        }
+
+        const { proyecto, problematica, requerimientos } = await respuesta.json();
+
+        document.querySelector("#titulo").textContent = proyecto.titulo;
+        document.querySelector("#identificacion").textContent =
+          `${proyecto.asignatura} · Lista ${proyecto.numeroLista} · ${proyecto.estudiante}`;
+
+        document.querySelector("#contexto").textContent = problematica.contexto;
+        document.querySelector("#actores").textContent = problematica.actores.join(", ");
+        document.querySelector("#proceso").textContent = problematica.procesoAfectado;
+
+        const lista = document.querySelector("#requerimientos");
+        for (const requisito of requerimientos) {
+          const elemento = document.createElement("li");
+          elemento.textContent =
+            `${requisito.id} — ${requisito.descripcion} (${requisito.estado})`;
+          lista.append(elemento);
+        }
+
+        document.querySelector("#resumen").hidden = false;
+        estado.hidden = true;
+      } catch (error) {
+        estado.textContent = "No se pudieron cargar los datos del proyecto.";
+        console.error("Error al leer proyecto-20.json", error);
+      }
+    }
+
+    cargarProyecto();
+  </script>
+</body>
+</html>
