@@ -3,9 +3,9 @@ Evaluación 4 TI3062 — Inventario y trazabilidad de spools en una bodega miner
 
 Inventario y trazabilidad de spools en minería
 
-Evaluación 4 · TI3062**  
-Estudiante:** Nicolas Tapia   
-Número de lista:** 20
+Evaluación 4 · TI3062  
+Estudiante:Nicolas Tapia   
+Número de lista:20
 
 Problemática
 
