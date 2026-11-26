@@ -1,0 +1,25 @@
+{
+  "proyecto": {
+    "titulo": "Inventario y trazabilidad de spools en minería",
+    "asignatura": "TI3062",
+    "numeroLista": "20",
+    "estudiante": "Nicolas Tapia"
+  },
+  "problematica": {
+    "contexto": "En una bodega minera simulada, registrar los movimientos de spools en planillas dispersas dificulta saber dónde quedó cada pieza y cuándo se entregó a terreno.",
+    "actores": ["Personal de bodega", "Equipo de montaje"],
+    "procesoAfectado": "Recepción, traslado y entrega de spools"
+  },
+  "requerimientos": [
+    {
+      "id": "RF-01",
+      "descripcion": "Registrar la recepción, el traslado o la entrega de un spool.",
+      "estado": "pendiente"
+    },
+    {
+      "id": "RF-02",
+      "descripcion": "Consultar por código el historial de movimientos y la última ubicación registrada de un spool.",
+      "estado": "pendiente"
+    }
+  ]
+}
