@@ -27,3 +27,12 @@ Publicación y uso
 
 Pendiente de despliegue. En esta sección se agregarán la URL publicada
 del sistema de gestión y las instrucciones de uso.
+
+
+## Publicación y uso
+
+**Sistema de gestión:** [ti3062-20.pages.dev](https://ti3062-20.pages.dev/)
+
+Abre el enlace para consultar la problemática, los actores y los
+requerimientos del proyecto. Los datos iniciales se cargan desde
+`data/proyecto-20.json`.
